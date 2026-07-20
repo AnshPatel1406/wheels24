@@ -13,208 +13,169 @@
     <meta name="author" content="Wheels24" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <title>Wheels24</title>
-    <style>
-      .fade-in {
-        opacity: 0;
-        transition: opacity 0.1s ease-in;
-      }
-      .fade-in.show {
-        opacity: 1;
-      }
-    </style>
+    
   </head>
   <body class="fade-in">
     <?php include 'includes/header.php'; ?>
-    <main>
-      <section id="home">
-        <section class="Scrollable_Logo">
-          <h1 style="font-size: 30em;">Wheels24</h1>
-          <a href="#most-searched" class="car" id="explore-button">Explore</a>
-        </section>
-      </section>
-      <section id="most-searched" class="curved-section">
-        <h1>The Most Searched Cars</h1>
-        <div class="horizontal-selection">
-          <button class="selection-button" data-category="suv">SUV</button>
-          <button class="selection-button" data-category="hatchback">Hatchback</button>
-          <button class="selection-button" data-category="sedan">Sedan</button>
-          <button class="selection-button" data-category="coupe">coupe</button>
-        
-          <!-- <button class="selection-button" data-category="luxury">Luxury</button> -->
-        </div>
-        <div id="car-subsections" class="car-subsections">
-          <!-- Car subsections will be displayed here dynamically -->
+        <main>
+      <!-- Hero Section -->
+      <section id="home" class="hero" style="background-image: url('./assets/images/tools.jpg');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <h1 class="hero-title">Discover Your Next <span class="text-accent">Dream Car</span></h1>
+          <p class="hero-subtitle">The ultimate destination for car research, reviews, and comparisons. Making your car buying journey smarter.</p>
+          <a href="#most-searched" class="btn btn-primary" id="explore-button">Explore Cars</a>
         </div>
       </section>
-      <section id="electric-cars" class="curved-section">
-        <h1>Electric Cars</h1>
-        <div id="electric-car-subsections" class="car-subsections">
-          <!-- Car subsections will be displayed here dynamically -->
-        </div>
-      </section>
-      <section id="latest-cars" class="curved-section">
-        <h1>Latest Cars</h1>
-        <div id="latest-car-subsections" class="car-subsections">
-          <!-- Car subsections will be displayed here dynamically -->
-        </div>
-      </section>
-      <section id="cars-by-budget" class="curved-section">
-        <h1>Cars by Budget</h1>
-        <div class="horizontal-selection">
-          <button class="selection-button" data-category="1-4-lakh">3 Lakh - 7 Lakh</button>
-          <button class="selection-button" data-category="4-8-lakh">7 Lakh - 12 Lakh</button>
-          <button class="selection-button" data-category="8-12-lakh">12 Lakh - 16 Lakh</button>
-          <button class="selection-button" data-category="12-17-lakh">16 Lakh - 20 Lakh</button>
-          <button class="selection-button" data-category="17-25-lakh">20 Lakh - 27 Lakh</button>
-        </div>
-        <div id="budget-car-subsections" class="car-subsections">
-          <!-- Car subsections will be displayed here dynamically -->
-        </div>
-      </section>
-      <section id="cars" class="curved-section">
-        <h1>Popular Brands</h1>
-        <section class="pics">
-          <a href="models.php?brand=TATA">
-            <section class="card">
-              <img src="./assets/images/logos/TATA.png" />
-              <h2>TATA Motors</h2>
-            </section>
-          </a>
 
-          <a href="models.php?brand=hyundai">
-            <section class="card">
+      <div class="container">
+        <!-- Most Searched Cars -->
+        <section id="most-searched" class="section">
+          <div class="text-center">
+            <h2 class="section-title">The Most Searched Cars</h2>
+            <p class="section-subtitle">Discover what others are looking for</p>
+          </div>
+          <div class="filter-pills" style="justify-content: center;">
+            <button class="filter-pill active selection-button" data-category="suv">SUV</button>
+            <button class="filter-pill selection-button" data-category="hatchback">Hatchback</button>
+            <button class="filter-pill selection-button" data-category="sedan">Sedan</button>
+            <button class="filter-pill selection-button" data-category="coupe">Coupe</button>
+          </div>
+          <div id="car-subsections" class="car-grid">
+            <!-- Dynamically populated -->
+          </div>
+        </section>
+
+        <!-- Electric Cars -->
+        <section id="electric-cars" class="section">
+          <div class="text-center">
+            <h2 class="section-title">Electric Cars</h2>
+            <p class="section-subtitle">The future of mobility is here</p>
+          </div>
+          <div id="electric-car-subsections" class="car-grid">
+            <!-- Dynamically populated -->
+          </div>
+        </section>
+
+        <!-- Latest Cars -->
+        <section id="latest-cars" class="section">
+          <div class="text-center">
+            <h2 class="section-title">Latest Cars</h2>
+            <p class="section-subtitle">New arrivals on the market</p>
+          </div>
+          <div id="latest-car-subsections" class="car-grid">
+            <!-- Dynamically populated -->
+          </div>
+        </section>
+
+        <!-- Cars by Budget -->
+        <section id="cars-by-budget" class="section">
+          <div class="text-center">
+            <h2 class="section-title">Cars by Budget</h2>
+            <p class="section-subtitle">Find the perfect car within your price range</p>
+          </div>
+          <div class="filter-pills" style="justify-content: center;">
+            <button class="filter-pill active selection-button" data-category="1-4-lakh">3 Lakh - 7 Lakh</button>
+            <button class="filter-pill selection-button" data-category="4-8-lakh">7 Lakh - 12 Lakh</button>
+            <button class="filter-pill selection-button" data-category="8-12-lakh">12 Lakh - 16 Lakh</button>
+            <button class="filter-pill selection-button" data-category="12-17-lakh">16 Lakh - 20 Lakh</button>
+            <button class="filter-pill selection-button" data-category="17-25-lakh">20 Lakh - 27 Lakh</button>
+          </div>
+          <div id="budget-car-subsections" class="car-grid">
+            <!-- Dynamically populated -->
+          </div>
+        </section>
+
+        <!-- Popular Brands -->
+        <section id="cars" class="section">
+          <div class="text-center">
+            <h2 class="section-title">Popular Brands</h2>
+            <p class="section-subtitle">Explore cars from top manufacturers</p>
+          </div>
+          <div class="brand-grid">
+            <a href="models?brand=TATA" class="brand-card">
+              <img src="./assets/images/logos/TATA.png" alt="TATA Motors" />
+              <h2>TATA Motors</h2>
+            </a>
+            <a href="models?brand=hyundai" class="brand-card">
               <img src="./assets/images/logos/hyundai.jfif" alt="Hyundai" />
               <h2>Hyundai</h2>
-            </section>
-          </a>
-
-          <a href="models.php?brand=kia">
-            <section class="card">
+            </a>
+            <a href="models?brand=kia" class="brand-card">
               <img src="./assets/images/logos/kia.png" alt="Kia Motors" />
               <h2>Kia Motors</h2>
-            </section>
-          </a>
-
-          <a href="models.php?brand=Toyota">
-            <section class="card">
+            </a>
+            <a href="models?brand=Toyota" class="brand-card">
               <img src="./assets/images/logos/toyota.jfif" alt="Toyota" />
               <h2>Toyota</h2>
-            </section>
-          </a>
-
-          <a href="models.php?brand=Vw">
-            <section class="card">
+            </a>
+            <a href="models?brand=Vw" class="brand-card">
               <img src="./assets/images/logos/volkswagon.jfif" alt="Volkswagen" />
               <h2>Volkswagen</h2>
-            </section>
-          </a>
-
-          <a href="models.php?brand=Maruti">
-            <section class="card">
+            </a>
+            <a href="models?brand=Maruti" class="brand-card">
               <img src="./assets/images/logos/suzuki.jfif" alt="Maruti Suzuki" />
               <h2>Maruti Suzuki</h2>
-            </section>
-          </a>
-
-          <a href="models.php?brand=Mahindra">
-            <section class="card">
-              <img src="./assets/images/logos/mahindra.jfif" />
+            </a>
+            <a href="models?brand=Mahindra" class="brand-card">
+              <img src="./assets/images/logos/mahindra.jfif" alt="Mahindra" />
               <h2>Mahindra</h2>
-            </section>
-          </a>
-
-          <a href="models.php?brand=Honda">
-            <section class="card">
-              <img src="./assets/images/logos/honda.jfif" />
+            </a>
+            <a href="models?brand=Honda" class="brand-card">
+              <img src="./assets/images/logos/honda.jfif" alt="Honda" />
               <h2>Honda</h2>
-            </section>
-          </a>
-
-          <a href="models.php?brand=Ford">
-            <section class="card">
-              <img src="./assets/images/logos/ford.png" />
+            </a>
+            <a href="models?brand=Ford" class="brand-card">
+              <img src="./assets/images/logos/ford.png" alt="Ford" />
               <h2>Ford</h2>
-            </section>
-          </a>
-
-          <a href="models.php?brand=Renault">
-            <section class="card">
-              <img src="./assets/images/logos/renault.jfif" />
+            </a>
+            <a href="models?brand=Renault" class="brand-card">
+              <img src="./assets/images/logos/renault.jfif" alt="Renault" />
               <h2>Renault</h2>
-            </section>
-          </a>
-
-          <a href="models.php?brand=Nissan">
-            <section class="card">
-              <img src="./assets/images/logos/nissan.jfif" />
+            </a>
+            <a href="models?brand=Nissan" class="brand-card">
+              <img src="./assets/images/logos/nissan.jfif" alt="Nissan" />
               <h2>Nissan</h2>
-            </section>
-          </a>
-
-          <a href="models.php?brand=Skoda">
-            <section class="card">
-              <img src="./assets/images/logos/skoda.jfif" />
+            </a>
+            <a href="models?brand=Skoda" class="brand-card">
+              <img src="./assets/images/logos/skoda.jfif" alt="Skoda" />
               <h2>Skoda</h2>
-            </section>
-          </a>
-
-          <a href="models.php?brand=Mercedes">
-            <section class="card">
-              <img src="./assets/images/logos/mercedes benz.jfif" />
+            </a>
+            <a href="models?brand=Mercedes" class="brand-card">
+              <img src="./assets/images/logos/mercedes benz.jfif" alt="Mercedes-Benz" />
               <h2>Mercedes-Benz</h2>
-            </section>
-          </a>
-
-          <a href="models.php?brand=BMW">
-            <section class="card">
-              <img src="./assets/images/logos/bmw.jfif" />
+            </a>
+            <a href="models?brand=BMW" class="brand-card">
+              <img src="./assets/images/logos/bmw.jfif" alt="BMW" />
               <h2>BMW</h2>
-            </section>
-          </a>
-
-          <a href="models.php?brand=Audi">
-            <section class="card">
-              <img src="./assets/images/logos/audi.png" />
+            </a>
+            <a href="models?brand=Audi" class="brand-card">
+              <img src="./assets/images/logos/audi.png" alt="Audi" />
               <h2>Audi</h2>
-            </section>
-          </a>
-
-          <a href="models.php?brand=Jaguar">
-            <section class="card">
-              <img src="./assets/images/logos/jaguar.jfif" />
+            </a>
+            <a href="models?brand=Jaguar" class="brand-card">
+              <img src="./assets/images/logos/jaguar.jfif" alt="Jaguar" />
               <h2>Jaguar</h2>
-            </section>
-          </a>
-
-          <a href="models.php?brand=MG">
-            <section class="card">
-              <img src="./assets/images/logos/mg moters.jfif" />
+            </a>
+            <a href="models?brand=MG" class="brand-card">
+              <img src="./assets/images/logos/mg moters.jfif" alt="MG" />
               <h2>MG</h2>
-            </section>
-          </a>
-
-          <a href="models.php?brand=Peugeot">
-            <section class="card">
-              <img src="./assets/images/logos/peugeot.jfif" />
+            </a>
+            <a href="models?brand=Peugeot" class="brand-card">
+              <img src="./assets/images/logos/peugeot.jfif" alt="Peugeot" />
               <h2>Peugeot</h2>
-            </section>
-          </a>
-
-          <a href="models.php?brand=Fiat">
-            <section class="card">
-              <img src="./assets/images/logos/fiat.jfif" />
+            </a>
+            <a href="models?brand=Fiat" class="brand-card">
+              <img src="./assets/images/logos/fiat.jfif" alt="Fiat" />
               <h2>Fiat</h2>
-            </section>
-          </a>
-
-          <a href="models.php?brand=Datsun">
-            <section class="card">
-              <img src="./assets/images/logos/datsun.jfif" />
+            </a>
+            <a href="models?brand=Datsun" class="brand-card">
+              <img src="./assets/images/logos/datsun.jfif" alt="Datsun" />
               <h2>Datsun</h2>
-            </section>
-          </a>
+            </a>
+          </div>
         </section>
-      </section>
+      </div>
     </main>
   <?php include 'includes/footer.php'; ?>
     <script>
@@ -359,15 +320,14 @@
           const cars = carData[category] || [];
           cars.forEach(car => {
             const carElement = document.createElement('div');
-            carElement.classList.add('car-subsection');
+            
+            carElement.className = 'car-card fade-in-up';
             carElement.innerHTML = `
-              <div class="car-image">
-                <img src="${car.image}" alt="${car.name}">
-              </div>
-              <div class="car-info">
+              <img src="${car.image}" alt="${car.name}" class="car-card-img">
+              <div class="car-card-body">
                 <h3>${car.name}</h3>
-                <p>${car.price}</p>
-                <button class="view-more-button" onclick="window.location.href='model-details.php?model=${car.name}'">View More</button>
+                <p class="text-accent" style="margin-bottom: 0.5rem; font-weight: 600;">${car.price}</p>
+                <button class="btn btn-primary" style="width: 100%;" onclick="window.location.href='model-details?model=${car.name}'">View Details</button>
               </div>
             `;
             carSubsections.appendChild(carElement);
@@ -383,7 +343,7 @@
           document.querySelectorAll('.selection-button').forEach(btn => btn.classList.remove('active'));
           button.classList.add('active');
           const category = button.getAttribute('data-category');
-          const containerId = button.closest('.curved-section').querySelector('.car-subsections').id;
+          const containerId = button.closest('.section').querySelector('.car-subsections').id;
           displayCarSubsections(category, containerId);
         });
       });
