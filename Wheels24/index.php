@@ -11,7 +11,7 @@
       content="Wheels24 is an automobiles information Platform"
     />
     <meta name="author" content="Wheels24" />
-    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <title>Wheels24</title>
     <style>
       .fade-in {
@@ -24,7 +24,7 @@
     </style>
   </head>
   <body class="fade-in">
-    <?php include 'header.php'; ?>
+    <?php include 'includes/header.php'; ?>
     <main>
       <section id="home">
         <section class="Scrollable_Logo">
@@ -76,147 +76,147 @@
         <section class="pics">
           <a href="models.php?brand=TATA">
             <section class="card">
-              <img src="./images/logos/TATA.png" />
+              <img src="./assets/images/logos/TATA.png" />
               <h2>TATA Motors</h2>
             </section>
           </a>
 
           <a href="models.php?brand=hyundai">
             <section class="card">
-              <img src="./images/logos/hyundai.jfif" alt="Hyundai" />
+              <img src="./assets/images/logos/hyundai.jfif" alt="Hyundai" />
               <h2>Hyundai</h2>
             </section>
           </a>
 
           <a href="models.php?brand=kia">
             <section class="card">
-              <img src="./images/logos/kia.png" alt="Kia Motors" />
+              <img src="./assets/images/logos/kia.png" alt="Kia Motors" />
               <h2>Kia Motors</h2>
             </section>
           </a>
 
           <a href="models.php?brand=Toyota">
             <section class="card">
-              <img src="./images/logos/toyota.jfif" alt="Toyota" />
+              <img src="./assets/images/logos/toyota.jfif" alt="Toyota" />
               <h2>Toyota</h2>
             </section>
           </a>
 
           <a href="models.php?brand=Vw">
             <section class="card">
-              <img src="./images/logos/volkswagon.jfif" alt="Volkswagen" />
+              <img src="./assets/images/logos/volkswagon.jfif" alt="Volkswagen" />
               <h2>Volkswagen</h2>
             </section>
           </a>
 
           <a href="models.php?brand=Maruti">
             <section class="card">
-              <img src="./images/logos/suzuki.jfif" alt="Maruti Suzuki" />
+              <img src="./assets/images/logos/suzuki.jfif" alt="Maruti Suzuki" />
               <h2>Maruti Suzuki</h2>
             </section>
           </a>
 
           <a href="models.php?brand=Mahindra">
             <section class="card">
-              <img src="./images/logos/mahindra.jfif" />
+              <img src="./assets/images/logos/mahindra.jfif" />
               <h2>Mahindra</h2>
             </section>
           </a>
 
           <a href="models.php?brand=Honda">
             <section class="card">
-              <img src="./images/logos/honda.jfif" />
+              <img src="./assets/images/logos/honda.jfif" />
               <h2>Honda</h2>
             </section>
           </a>
 
           <a href="models.php?brand=Ford">
             <section class="card">
-              <img src="./images/logos/ford.png" />
+              <img src="./assets/images/logos/ford.png" />
               <h2>Ford</h2>
             </section>
           </a>
 
           <a href="models.php?brand=Renault">
             <section class="card">
-              <img src="./images/logos/renault.jfif" />
+              <img src="./assets/images/logos/renault.jfif" />
               <h2>Renault</h2>
             </section>
           </a>
 
           <a href="models.php?brand=Nissan">
             <section class="card">
-              <img src="./images/logos/nissan.jfif" />
+              <img src="./assets/images/logos/nissan.jfif" />
               <h2>Nissan</h2>
             </section>
           </a>
 
           <a href="models.php?brand=Skoda">
             <section class="card">
-              <img src="./images/logos/skoda.jfif" />
+              <img src="./assets/images/logos/skoda.jfif" />
               <h2>Skoda</h2>
             </section>
           </a>
 
           <a href="models.php?brand=Mercedes">
             <section class="card">
-              <img src="./images/logos/mercedes benz.jfif" />
+              <img src="./assets/images/logos/mercedes benz.jfif" />
               <h2>Mercedes-Benz</h2>
             </section>
           </a>
 
           <a href="models.php?brand=BMW">
             <section class="card">
-              <img src="./images/logos/bmw.jfif" />
+              <img src="./assets/images/logos/bmw.jfif" />
               <h2>BMW</h2>
             </section>
           </a>
 
           <a href="models.php?brand=Audi">
             <section class="card">
-              <img src="./images/logos/audi.png" />
+              <img src="./assets/images/logos/audi.png" />
               <h2>Audi</h2>
             </section>
           </a>
 
           <a href="models.php?brand=Jaguar">
             <section class="card">
-              <img src="./images/logos/jaguar.jfif" />
+              <img src="./assets/images/logos/jaguar.jfif" />
               <h2>Jaguar</h2>
             </section>
           </a>
 
           <a href="models.php?brand=MG">
             <section class="card">
-              <img src="./images/logos/mg moters.jfif" />
+              <img src="./assets/images/logos/mg moters.jfif" />
               <h2>MG</h2>
             </section>
           </a>
 
           <a href="models.php?brand=Peugeot">
             <section class="card">
-              <img src="./images/logos/peugeot.jfif" />
+              <img src="./assets/images/logos/peugeot.jfif" />
               <h2>Peugeot</h2>
             </section>
           </a>
 
           <a href="models.php?brand=Fiat">
             <section class="card">
-              <img src="./images/logos/fiat.jfif" />
+              <img src="./assets/images/logos/fiat.jfif" />
               <h2>Fiat</h2>
             </section>
           </a>
 
           <a href="models.php?brand=Datsun">
             <section class="card">
-              <img src="./images/logos/datsun.jfif" />
+              <img src="./assets/images/logos/datsun.jfif" />
               <h2>Datsun</h2>
             </section>
           </a>
         </section>
       </section>
     </main>
-  <?php include 'footer.php'; ?>
+  <?php include 'includes/footer.php'; ?>
     <script>
       document.getElementById('explore-button').addEventListener('click', function(event) {
         event.preventDefault();

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Models - Wheels24</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
       .fade-in {
         opacity: 0;
@@ -33,7 +33,7 @@
     </script>
 </head>
 <body class="fade-in">
-<?php include 'header.php'; ?>
+<?php include 'includes/header.php'; ?>
 
     <main>
         <section id="models" class="model-container">
@@ -64,7 +64,7 @@
             document.getElementById("brand-name").innerText = brand + " Models";
     
             // Fetch the JSON file
-            fetch("models.json") // Ensure this path is correct
+            fetch("data/models.json") // Ensure this path is correct
                 .then(response => response.json())
                 .then(data => {
                     const models = data[brand.toLowerCase()] || []; // Get models for selected brand
@@ -112,6 +112,6 @@
           if (parts.length === 2) return parts.pop().split(';').shift();
         }
     </script>
-     <?php include 'footer.php'; ?>
+     <?php include 'includes/footer.php'; ?>
 </body>
 </html>

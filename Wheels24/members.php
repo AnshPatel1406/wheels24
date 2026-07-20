@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db.php';
+include 'config/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['add_user'])) {

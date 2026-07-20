@@ -1,6 +1,6 @@
 <?php
 // Include database connection
-include 'db.php';
+include 'config/db.php';
 
 // Fetch all tables in the database
 $tables = [];

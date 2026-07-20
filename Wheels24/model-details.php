@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Model Details</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
         body {
             padding-top: 60px; /* Adjust this value based on the height of your header */
@@ -262,7 +262,7 @@
         }
 
     </style>
-    <script src="model-details.js"></script>
+    <script src="assets/js/model-details.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -390,7 +390,7 @@
     </script>
 </head>
 <body>
-<?php include 'header.php'; ?>
+<?php include 'includes/header.php'; ?>
     <main>
         <div class="car-overview">
             <img id="model-image" alt="Car Image" />
@@ -500,6 +500,6 @@
             </form>
         </div>
     </main>
-    <?php include 'footer.php'; ?>
+    <?php include 'includes/footer.php'; ?>
 </body>
 </html>

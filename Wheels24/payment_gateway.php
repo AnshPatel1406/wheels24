@@ -123,6 +123,6 @@ $conn->close();
             }, 2000); // Simulating a delay for fake processing
         }
     </script>
-     <?php include 'footer.php'; ?>
+     <?php include 'includes/footer.php'; ?>
 </body>
 </html>

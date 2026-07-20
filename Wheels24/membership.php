@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Membership Plans - Car Buying Guide</title>
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
         
 
@@ -87,7 +87,7 @@
    
 </head>
 <body>
-<?php include 'header.php'; ?>
+<?php include 'includes/header.php'; ?>
     <div class="container">
         <h1>Choose Your Membership Plan</h1>
         
@@ -128,6 +128,6 @@
             <a href="enroll_form.php" class="btn">Go Platinum Now</a>
         </div>
     </div>
-    <?php include 'footer.php'; ?>
+    <?php include 'includes/footer.php'; ?>
 </body>
 </html>

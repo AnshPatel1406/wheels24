@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db.php';
+include 'config/db.php';
 
 $payments = $conn->query("SELECT * FROM payments");
 

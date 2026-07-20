@@ -1,5 +1,5 @@
 <?php
-require 'db.php'; // Include your database connection file
+require 'config/db.php'; // Include your database connection file
 
 // Fetch car list for dropdowns
 $carsQuery = "SELECT car_id, name FROM cars";
