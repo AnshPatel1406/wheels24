@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         if ($stmt_insert->execute()) {
             // Redirect to payment gateway
-            header("Location: payment_gateway.php?name=$name&email=$email&phone=$phone&membership=$membership&payment_method=$payment_method&transaction_id=$transaction_id");
+            header("Location: payment_gateway?name=$name&email=$email&phone=$phone&membership=$membership&payment_method=$payment_method&transaction_id=$transaction_id");
             exit();
         } else {
             $message = "Error: " . $stmt_insert->error;
@@ -147,7 +147,7 @@ $conn->close();
                 <p><strong>Payment Method:</strong> <?php echo $payment_method; ?></p>
             </div>
         <?php else: ?>
-            <form action="enroll_form.php" method="post">
+            <form action="enroll_form" method="post">
                 <label for="name">Full Name:</label>
                 <input type="text" id="name" name="name" required>
                 

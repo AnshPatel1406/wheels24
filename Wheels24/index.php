@@ -244,10 +244,10 @@
 
       // Handle logout
       document.getElementById('logout-button').addEventListener('click', function() {
-          fetch('logout.php')
+          fetch('')
               .then(() => {
                   sessionStorage.removeItem('username');
-                  window.location.href = 'index.php';
+                  window.location.href = '';
               })
               .catch(error => {
                   console.error('Error:', error);

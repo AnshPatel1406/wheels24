@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bind_param("ssssssss", $name, $city, $mobile, $email, $username, $password, $security_question, $security_answer);
         $stmt->execute();
         $stmt->close();
-        header("Location: users.php");
+        header("Location: users");
     } elseif (isset($_POST['update_user'])) {
         $id = $_POST['id'];
         $name = $_POST['name'];
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bind_param("ssssssssi", $name, $city, $mobile, $email, $username, $password, $security_question, $security_answer, $id);
         $stmt->execute();
         $stmt->close();
-        header("Location: users.php");
+        header("Location: users");
     } elseif (isset($_POST['delete_user'])) {
         $id = $_POST['id'];
         $query = "DELETE FROM users WHERE id=?";
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $stmt->close();
-        header("Location: users.php");
+        header("Location: users");
     }
 }
 ?>

@@ -416,7 +416,7 @@
             <div id="features-content" class="features-content">
                 <!-- Top features will be dynamically inserted here -->
             </div>
-            <a href="../Wheels24/detail_specification/Toyota_Fortuner_specification.php" style="font-size: 2em; color: #007BFF; text-decoration: underline; margin-top: 20px; display: block;">View all Specs & Features</a>
+            <a href="../detail_specification/Toyota_Fortuner_specification" style="font-size: 2em; color: #007BFF; text-decoration: underline; margin-top: 20px; display: block;">View all Specs & Features</a>
         </div>
         <div class="section">
             <h2 id="variants-title"></h2>

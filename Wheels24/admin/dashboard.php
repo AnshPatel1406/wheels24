@@ -115,7 +115,7 @@ $total_payments = $conn->query("SELECT SUM(amount) as total FROM payments WHERE 
 
 <header>
     <h1>Admin Dashboard</h1>
-    <a href="../logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    <a href="../logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
 </header>
 
 <div class="container">
@@ -139,10 +139,10 @@ $total_payments = $conn->query("SELECT SUM(amount) as total FROM payments WHERE 
     </div>
 
     <div class="dashboard-menu">
-        <a href="users.php"><i class="fas fa-users"></i> Manage Users</a>
-        <a href="members.php"><i class="fas fa-id-card"></i> Manage Memberships</a>
-        <a href="payments.php"><i class="fas fa-credit-card"></i> Manage Payments</a>
-        <a href="brands.php"><i class="fas fa-tags"></i> Manage Brands</a>
+        <a href="users"><i class="fas fa-users"></i> Manage Users</a>
+        <a href="members"><i class="fas fa-id-card"></i> Manage Memberships</a>
+        <a href="payments"><i class="fas fa-credit-card"></i> Manage Payments</a>
+        <a href="brands"><i class="fas fa-tags"></i> Manage Brands</a>
     </div>
 </div>
 

@@ -99,7 +99,7 @@
                 <li>✔ Latest car price updates</li>
                 <li>✔ Limited access to exclusive deals</li>
             </ul>
-            <a href="enroll_form.php" class="btn">Join Now</a>
+            <a href="enroll_form" class="btn">Join Now</a>
         </div>
 
         <div class="membership-plan gold">
@@ -112,7 +112,7 @@
                 <li>✔ Early access to upcoming models</li>
                 <li>✔ Discounts on accessories & services</li>
             </ul>
-            <a href="enroll_form.php" class="btn">Upgrade to Gold</a>
+            <a href="enroll_form" class="btn">Upgrade to Gold</a>
         </div>
 
         <div class="membership-plan platinum">
@@ -125,7 +125,7 @@
                 <li>✔ Best deals & financing options</li>
                 <li>✔ Complimentary car maintenance tips</li>
             </ul>
-            <a href="enroll_form.php" class="btn">Go Platinum Now</a>
+            <a href="enroll_form" class="btn">Go Platinum Now</a>
         </div>
     </div>
     <?php include 'includes/footer.php'; ?>

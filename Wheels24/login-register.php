@@ -172,13 +172,13 @@
             <p><a href="#" id="forgot-password-link">Forgot Password?</a></p>
         </div>
         <div class="signup-link">
-            <p>New User? <a href="register.php">Signup here</a></p>
+            <p>New User? <a href="register">Signup here</a></p>
         </div>
     </div>
     <div class="modal-overlay" id="modal-overlay">
         <div class="reset-password">
             <h2>Reset Password</h2>
-            <form action="recover-password.php" method="post" class="forgot-password-form" id="forgot-password-form">
+            <form action="recover-password" method="post" class="forgot-password-form" id="forgot-password-form">
                 <label for="recovery-username">Username:</label>
                 <input type="text" id="recovery-username" name="username" required autocapitalize="none" style="text-transform: none;">
                 <label for="recovery-answer">Answer to your security question:</label>
@@ -217,7 +217,7 @@
                 return;
             }
 
-            fetch('recover-password.php', {
+            fetch('', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -265,7 +265,7 @@
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            fetch('login.php', {
+            fetch('', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -283,7 +283,7 @@
                     loginMessage.textContent = 'Logged in Successfully!';
                     setTimeout(() => {
                         document.cookie = `username=${data.username}`;
-                        window.location.href = 'index.php';
+                        window.location.href = '';
                     }, 1000);
                 } else {
                     loginMessage.textContent = data.message;

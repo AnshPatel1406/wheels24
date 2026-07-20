@@ -135,7 +135,7 @@
             <p style="font-size: 0.45em;">Note: The security question will be used to recover your password in case you forget it.</p>
         </div>
         <div class="back-to-login">
-            <p><a href="login-register.php">Back to Login</a></p>
+            <p><a href="login-register">Back to Login</a></p>
         </div>
     </div>
     <div class="popup-message" id="popup-message">
@@ -163,7 +163,7 @@
             event.preventDefault();
             const formData = new FormData(this);
 
-            fetch('registerr.php', {
+            fetch('', {
                 method: 'POST',
                 body: formData
             })
@@ -174,7 +174,7 @@
                     popupMessage.style.display = 'block';
                     setTimeout(() => {
                         popupMessage.style.display = 'none';
-                        window.location.href = 'login-register.php';
+                        window.location.href = '';
                     }, 1000);
                 } else {
                     alert('Error: ' + data.message);
