@@ -1,19 +1,14 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "wheels24";
-
-$conn = new mysqli($servername, $username, $password, $database);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require 'config/db.php';
 
 $message = "";
 $showPaymentDetails = false;
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (!$conn) {
+    $message = "Error: Database connection failed. Please ensure the database is running and credentials are correct in config/db.php.";
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && $conn) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
@@ -48,7 +43,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $stmt->close();
 }
-$conn->close();
+if ($conn) {
+    $conn->close();
+}
 ?>
 
 <!DOCTYPE html>

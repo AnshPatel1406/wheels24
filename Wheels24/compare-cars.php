@@ -3,10 +3,12 @@ require 'config/db.php'; // Include your database connection file
 
 // Fetch car list for dropdowns
 $carsQuery = "SELECT car_id, name FROM cars";
-$carsResult = $conn->query($carsQuery);
 $cars = [];
-if ($carsResult) {
-    $cars = $carsResult->fetch_all(MYSQLI_ASSOC);
+if ($conn) {
+    $carsResult = $conn->query($carsQuery);
+    if ($carsResult) {
+        $cars = $carsResult->fetch_all(MYSQLI_ASSOC);
+    }
 }
 
 $car1 = $car2 = null;
@@ -16,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $car1 = $_GET['car1'] ?? null;
     $car2 = $_GET['car2'] ?? null;
 
-    if ($car1 && $car2 && $car1 !== $car2) {
+    if ($car1 && $car2 && $car1 !== $car2 && $conn) {
         $compareQuery = "
             SELECT 
             c1.name AS car1_name, c2.name AS car2_name, 
