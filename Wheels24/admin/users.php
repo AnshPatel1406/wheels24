@@ -1,6 +1,6 @@
 <?php
 // Include database connection
-include 'config/db.php';
+include '../config/db.php';
 
 // Fetch all users
 $query = "SELECT * FROM users";

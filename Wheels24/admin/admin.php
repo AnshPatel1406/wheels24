@@ -1,6 +1,6 @@
 <?php
 // Include the database connection file
-include 'config/db.php';
+include '../config/db.php';
 
 // Handle form submission for adding a new car
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_car'])) {

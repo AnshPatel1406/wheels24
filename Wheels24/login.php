@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $row['password'])) {
             $_SESSION['admin_logged_in'] = true;
             $_SESSION['admin_username'] = $row['username'];
-            echo json_encode(['success' => true, 'role' => 'admin', 'username' => $row['username'], 'redirect' => 'dashboard.php']);
+            echo json_encode(['success' => true, 'role' => 'admin', 'username' => $row['username'], 'redirect' => 'admin/dashboard.php']);
             exit();
         } else {
             echo json_encode(['success' => false, 'message' => 'Invalid password']);

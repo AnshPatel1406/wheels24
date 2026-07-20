@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'config/db.php';
+include '../config/db.php';
 
 // Prevent direct access - Only allow logged-in admins
 
@@ -115,7 +115,7 @@ $total_payments = $conn->query("SELECT SUM(amount) as total FROM payments WHERE 
 
 <header>
     <h1>Admin Dashboard</h1>
-    <a href="logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    <a href="../logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
 </header>
 
 <div class="container">
