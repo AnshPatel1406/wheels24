@@ -74,44 +74,38 @@ $sql = "SELECT * FROM cars";
 $result = $conn->query($sql);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Manage Cars</title>
-</head>
-<body>
-    <h1>Admin - Manage Cars</h1>
+<?php include 'includes/header.php'; ?>
+<div class="fade-in-up">
+    <div class="admin-header"><h1>Admin - Manage Cars</h1></div>
 
-    <h2>Add New Car</h2>
-    <form action="" method="post">
-        <label for="brand_id">Brand ID:</label>
-        <input type="number" name="brand_id" id="brand_id" required>
-        <br>
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" required>
-        <br>
-        <label for="type">Type:</label>
-        <input type="text" name="type" id="type" required>
-        <br>
-        <label for="description">Description:</label>
-        <textarea name="description" id="description" required></textarea>
-        <br>
-        <label for="image">Image URL:</label>
-        <input type="text" name="image" id="image" required>
-        <br>
-        <label for="brief">Brief:</label>
-        <textarea name="brief" id="brief" required></textarea>
-        <br>
-        <label for="price">Price:</label>
-        <input type="text" name="price" id="price" required>
-        <br>
-        <input type="submit" name="add_car" value="Add Car">
-    </form>
+    <h2 style="margin-bottom: 1rem; color: var(--accent); font-size: 1.2rem;">Add New Car</h2>
+    <div class="card" style="margin-bottom: 2rem;"><form class="admin-form" action="" method="post">
+        <div><label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem;" for="brand_id">Brand ID:</label>
+        <input class="form-control" type="number" name="brand_id" id="brand_id" required></div>
+        
+        <div><label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem;" for="name">Name:</label>
+        <input class="form-control" type="text" name="name" id="name" required></div>
+        
+        <div><label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem;" for="type">Type:</label>
+        <input class="form-control" type="text" name="type" id="type" required></div>
+        
+        <div><label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem;" for="description">Description:</label>
+        <textarea class="form-control" name="description" id="description" required></textarea></div>
+        
+        <div><label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem;" for="image">Image URL:</label>
+        <input class="form-control" type="text" name="image" id="image" required></div>
+        
+        <div><label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem;" for="brief">Brief:</label>
+        <textarea class="form-control" name="brief" id="brief" required></textarea></div>
+        
+        <div><label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem;" for="price">Price:</label>
+        <input class="form-control" type="text" name="price" id="price" required></div>
+        
+        <input type="submit" class="btn btn-primary" style="align-self: end;" name="add_car" value="Add Car">
+    </form></div>
 
-    <h2>Existing Cars</h2>
-    <table border="1">
+    <h2 style="margin-bottom: 1rem; color: var(--accent); font-size: 1.2rem;">Existing Cars</h2>
+    <div class="admin-table-container"><table class="admin-table">
         <tr>
             <th>Car ID</th>
             <th>Brand ID</th>
@@ -139,7 +133,7 @@ $result = $conn->query($sql);
             </td>
         </tr>
         <?php endwhile; ?>
-    </table>
+    </table></div>
 
     <?php
     // Handle edit functionality
@@ -152,32 +146,32 @@ $result = $conn->query($sql);
         $result = $stmt->get_result();
         $car = $result->fetch_assoc();
     ?>
-    <h2>Edit Car</h2>
-    <form action="" method="post">
-        <input type="hidden" name="car_id" value="<?php echo $car['car_id']; ?>">
-        <label for="brand_id">Brand ID:</label>
-        <input type="number" name="brand_id" id="brand_id" value="<?php echo $car['brand_id']; ?>" required>
-        <br>
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" value="<?php echo $car['name']; ?>" required>
-        <br>
-        <label for="type">Type:</label>
-        <input type="text" name="type" id="type" value="<?php echo $car['type']; ?>" required>
-        <br>
-        <label for="description">Description:</label>
-        <textarea name="description" id="description" required><?php echo $car['description']; ?></textarea>
-        <br>
-        <label for="image">Image URL:</label>
-        <input type="text" name="image" id="image" value="<?php echo $car['image']; ?>" required>
-        <br>
-        <label for="brief">Brief:</label>
-        <textarea name="brief" id="brief" required><?php echo $car['brief']; ?></textarea>
-        <br>
-        <label for="price">Price:</label>
-        <input type="text" name="price" id="price" value="<?php echo $car['price']; ?>" required>
-        <br>
-        <input type="submit" name="update_car" value="Update Car">
-    </form>
+    <h2 style="margin-bottom: 1rem; color: var(--accent); font-size: 1.2rem;">Edit Car</h2>
+    <div class="card" style="margin-bottom: 2rem;"><form class="admin-form" action="" method="post">
+        <input class="form-control" type="hidden" name="car_id" value="<?php echo $car['car_id']; ?></div>">
+        <div><label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem;" for="brand_id">Brand ID:</label>
+        <input class="form-control" type="number" name="brand_id" id="brand_id" value="<?php echo $car['brand_id']; ?></div>" required>
+        
+        <div><label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem;" for="name">Name:</label>
+        <input class="form-control" type="text" name="name" id="name" value="<?php echo $car['name']; ?></div>" required>
+        
+        <div><label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem;" for="type">Type:</label>
+        <input class="form-control" type="text" name="type" id="type" value="<?php echo $car['type']; ?></div>" required>
+        
+        <div><label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem;" for="description">Description:</label>
+        <textarea class="form-control" name="description" id="description" required><?php echo $car['description']; ?></textarea></div>
+        
+        <div><label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem;" for="image">Image URL:</label>
+        <input class="form-control" type="text" name="image" id="image" value="<?php echo $car['image']; ?></div>" required>
+        
+        <div><label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem;" for="brief">Brief:</label>
+        <textarea class="form-control" name="brief" id="brief" required><?php echo $car['brief']; ?></textarea></div>
+        
+        <div><label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem;" for="price">Price:</label>
+        <input class="form-control" type="text" name="price" id="price" value="<?php echo $car['price']; ?></div>" required>
+        
+        <input type="submit" class="btn btn-primary" style="align-self: end;" name="update_car" value="Update Car">
+    </form></div>
     <?php
         $stmt->close();
     }
@@ -187,5 +181,5 @@ $result = $conn->query($sql);
     // Close the database connection
     $conn->close();
     ?>
-</body>
-</html>
+</div>
+<?php include 'includes/footer.php'; ?>

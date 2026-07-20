@@ -141,82 +141,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
         }
     ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Manage Database</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        h1, h2, h3 {
-            color: #4CAF50;
-        }
-        form {
-            margin-bottom: 20px;
-        }
-        select, input[type="text"], button {
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 100%;
-            max-width: 300px;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        .actions button {
-            background-color: #f44336;
-            margin: 0 5px;
-        }
-        .actions button:hover {
-            background-color: #d32f2f;
-        }
-    </style>
-</head>
-<body>
-    <h1>Manage Database</h1>
-    <form method="get">
-        <label for="table">Select Table:</label>
-        <select name="table" id="table" onchange="this.form.submit()">
+<?php include 'includes/header.php'; ?>
+<div class="fade-in-up">
+    <div class="admin-header"><h1>Manage Database</h1></div>
+    <div class="card" style="margin-bottom: 2rem;"><form class="admin-form" method="get">
+        <div><label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem;" for="table">Select Table:</label>
+        <select class="form-control" name="table" id="table" onchange="this.form.submit()">
             <option value="">--Select--</option>
             <?php foreach ($tables as $table): ?>
                 <option value="<?= $table ?>" <?= $selectedTable === $table ? 'selected' : '' ?>><?= $table ?></option>
             <?php endforeach; ?>
-        </select>
-    </form>
+        </select></div>
+    </form></div>
 
     <?php if ($selectedTable): ?>
-        <h2>Table: <?= $selectedTable ?></h2>
-        <table>
+        <h2 style="margin-bottom: 1rem; color: var(--accent); font-size: 1.2rem;">Table: <?= $selectedTable ?></h2>
+        <div class="admin-table-container"><table class="admin-table">
             <tr>
                 <?php
                 $columns = $conn->query("SHOW COLUMNS FROM $selectedTable");
@@ -234,26 +174,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
                         <td><?= $value ?></td>
                     <?php endforeach; ?>
                     <td class="actions">
-                        <form method="post" style="display:inline;">
-                            <input type="hidden" name="id" value="<?= $row[array_key_first($row)] ?>">
+                        <div class="card" style="margin-bottom: 2rem;"><form class="admin-form" method="post" style="display:inline;">
+                            <input class="form-control" type="hidden" name="id" value="<?= $row[array_key_first($row)] ?></div>">
                             <button type="submit" name="delete" onclick="return confirm('Are you sure you want to delete this entry?');">Delete</button>
-                        </form>
+                        </form></div>
                     </td>
                 </tr>
             <?php endwhile; ?>
-        </table>
+        </table></div>
         <h3>Add New Row</h3>
-        <form method="post">
+        <div class="card" style="margin-bottom: 2rem;"><form class="admin-form" method="post">
             <?php
             // Fetch columns for the selected table
             $columns = $conn->query("SHOW COLUMNS FROM $selectedTable");
             while ($col = $columns->fetch_assoc()): ?>
-            <label for="<?= $col['Field'] ?>"><?= $col['Field'] ?>:</label>
-            <input type="text" name="values[<?= $col['Field'] ?>]" id="<?= $col['Field'] ?>" required>
-            <br>
+            <div><label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem;" for="<?= $col['Field'] ?>"><?= $col['Field'] ?>:</label>
+            <input class="form-control" type="text" name="values[<?= $col['Field'] ?></div>]" id="<?= $col['Field'] ?>" required>
+            
             <?php endwhile; ?>
             <button type="submit" name="add">Add</button>
-        </form>
+        </form></div>
     <?php endif; ?>
-</body>
-</html>
+</div>
+<?php include 'includes/footer.php'; ?>

@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $result = mysqli_query($conn, $query);
 
 while ($row = mysqli_fetch_assoc($result)) {
-    echo "Member Name: " . $row['name'] . " - Payment Method: " . $row['payment_method'] . "<br>";
+    echo "Member Name: " . $row['name'] . " - Payment Method: " . $row['payment_method'] . "";
 }
 
 }
@@ -71,7 +71,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                             </tr>
                             <?php } ?>
                         </tbody>
-                    </table>
+                    </table></div>
                 </div>
             </div>
         </div>
@@ -82,36 +82,36 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <h2 class="h5 mb-0"><i class="fas fa-plus me-2"></i>Add Payment</h2>
             </div>
             <div class="card-body">
-                <form method="POST" class="row g-3">
+                <div class="card" style="margin-bottom: 2rem;"><form class="admin-form" method="POST" class="row g-3">
                     <div class="col-md-6">
-                        <label class="form-label">Member ID</label>
-                        <input type="number" name="user_id" class="form-control" required>
+                        <div><label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem;" class="form-label">Member ID</label>
+                        <input class="form-control" type="number" name="user_id" class="form-control" required></div>
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">Amount ($)</label>
-                        <input type="number" step="0.01" name="amount" class="form-control" required>
+                        <div><label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem;" class="form-label">Amount ($)</label>
+                        <input class="form-control" type="number" step="0.01" name="amount" class="form-control" required></div>
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">Payment Date</label>
-                        <input type="date" name="payment_date" class="form-control" required>
+                        <div><label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem;" class="form-label">Payment Date</label>
+                        <input class="form-control" type="date" name="payment_date" class="form-control" required></div>
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">Status</label>
-                        <select name="status" class="form-select">
+                        <div><label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem;" class="form-label">Status</label>
+                        <select class="form-control" name="status" class="form-select">
                             <option value="Pending">Pending</option>
                             <option value="Completed">Completed</option>
-                        </select>
+                        </select></div>
                     </div>
                     <div class="col-12">
                         <button type="submit" name="add_payment" class="btn btn-primary">
                             <i class="fas fa-plus me-2"></i>Add Payment
                         </button>
                     </div>
-                </form>
+                </form></div>
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+</div>
+<?php include 'includes/footer.php'; ?>
