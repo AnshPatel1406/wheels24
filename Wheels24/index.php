@@ -348,6 +348,40 @@
         });
       });
 
+      function displayCarSubsections(category, containerId) {
+          const container = document.getElementById(containerId);
+          if (!container || !carData[category]) return;
+          
+          container.innerHTML = '';
+          carData[category].forEach((car, index) => {
+              const carCard = document.createElement('div');
+              carCard.className = 'car-card fade-in-up';
+              carCard.style.animationDelay = (index * 0.1) + 's';
+              carCard.innerHTML = `
+                  <img src="${car.image}" alt="${car.name}" style="width:100%; height:200px; object-fit:cover; border-radius:var(--radius-lg) var(--radius-lg) 0 0;" />
+                  <div style="padding:1.5rem;">
+                      <h3 style="margin-bottom:0.5rem; font-size:1.2rem;">${car.name}</h3>
+                      <p style="color:var(--accent); font-weight:600; margin-bottom:1rem;">${car.price}</p>
+                      <a href="models?brand=${car.name.split(' ')[0]}" class="btn btn-primary" style="width:100%; text-align:center;">View Details</a>
+                  </div>
+              `;
+              container.appendChild(carCard);
+          });
+      }
+
+      document.querySelectorAll('.selection-button').forEach(button => {
+          button.addEventListener('click', function() {
+              const section = this.closest('.section');
+              const container = section.querySelector('.car-grid');
+              
+              section.querySelectorAll('.selection-button').forEach(btn => btn.classList.remove('active'));
+              this.classList.add('active');
+              
+              const category = this.getAttribute('data-category');
+              displayCarSubsections(category, container.id);
+          });
+      });
+
       // Display default category (SUV) on page load
       document.querySelector('.selection-button[data-category="suv"]').classList.add('active');
       displayCarSubsections('suv', 'car-subsections');

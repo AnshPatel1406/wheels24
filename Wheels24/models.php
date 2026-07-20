@@ -17,7 +17,8 @@
     <main class="container section" style="min-height: 80vh; padding-top: 8rem;">
         <div class="text-center">
             <h1 id="brand-name" class="section-title">Loading...</h1>
-            <p class="section-subtitle">Explore the lineup</p>
+            <p class="section-subtitle" style="margin-bottom: 1rem;">Explore the lineup</p>
+            <a href="index.php" class="btn btn-primary" style="background: transparent; border: 1px solid var(--border-color); color: var(--text-primary); margin-bottom: 2rem; display: inline-block;">&larr; Back to Home</a>
         </div>
         
         <section id="models" class="car-grid fade-in-up" style="margin-top: 2rem;">
@@ -59,8 +60,12 @@
         const brand = urlParams.get('brand');
     
         if (brand) {
-            // Capitalize first letter
-            const displayBrand = brand.charAt(0).toUpperCase() + brand.slice(1);
+            // Capitalize first letter or override for specific brands
+            let displayBrand = brand.charAt(0).toUpperCase() + brand.slice(1);
+            if (brand.toLowerCase() === 'vw') {
+                displayBrand = 'Volkswagen';
+            }
+            
             document.getElementById("brand-name").innerText = displayBrand + " Models";
     
             // Fetch the JSON file
