@@ -10,8 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $amount = $_POST['amount'];
         $date = $_POST['payment_date'];
         $status = $_POST['status'];
-        $query = "INSERT INTO payments (user_id, amount, payment_date, status) VALUES ('$user_id', '$amount', '$date', '$status')";
-        $conn->query($query);
+        $query = "INSERT INTO payments (user_id, amount, payment_date, status) VALUES (?, ?, ?, ?)";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("idss", $user_id, $amount, $date, $status);
+        $stmt->execute();
+        $stmt->close();
         header("Location: ".$_SERVER['PHP_SELF']); // Refresh after submission
         exit();
     }

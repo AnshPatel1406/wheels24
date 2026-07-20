@@ -11,6 +11,9 @@ while ($row = $result->fetch_array()) {
 
 // Handle table selection
 $selectedTable = $_GET['table'] ?? null;
+if ($selectedTable && !in_array($selectedTable, $tables)) {
+    $selectedTable = null;
+}
 
 // Handle add operation
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {

@@ -23,22 +23,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $join_date = date('Y-m-d'); // Get the current date
 
     // Check for duplicate entry
-    $check_sql = "SELECT * FROM members WHERE email='$email' OR phone='$phone'";
-    $result = $conn->query($check_sql);
+    $check_sql = "SELECT * FROM members WHERE email=? OR phone=?";
+    $stmt = $conn->prepare($check_sql);
+    $stmt->bind_param("ss", $email, $phone);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
         $message = "Error: Duplicate entry. Please use a different email or phone number.";
     } else {
         // Insert member data into the members table
-        $insert_sql = "INSERT INTO members (name, email, phone, membership_type, join_date, payment_method, transaction_id) VALUES ('$name', '$email', '$phone', '$membership', '$join_date', '$payment_method', '$transaction_id')";
-        if ($conn->query($insert_sql) === TRUE) {
+        $insert_sql = "INSERT INTO members (name, email, phone, membership_type, join_date, payment_method, transaction_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt_insert = $conn->prepare($insert_sql);
+        $stmt_insert->bind_param("sssssss", $name, $email, $phone, $membership, $join_date, $payment_method, $transaction_id);
+        
+        if ($stmt_insert->execute()) {
             // Redirect to payment gateway
             header("Location: payment_gateway.php?name=$name&email=$email&phone=$phone&membership=$membership&payment_method=$payment_method&transaction_id=$transaction_id");
             exit();
         } else {
-            $message = "Error: " . $conn->error;
+            $message = "Error: " . $stmt_insert->error;
         }
+        $stmt_insert->close();
     }
+    $stmt->close();
 }
 $conn->close();
 ?>

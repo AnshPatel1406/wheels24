@@ -19,14 +19,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $transaction_id = uniqid("TXN_"); // Generate unique transaction ID
 
     // Insert payment details into database
-    $sql = "INSERT INTO payments (payment_method, transaction_id) 
-            VALUES ('$payment_method', '$transaction_id')";
+    $sql = "INSERT INTO payments (payment_method, transaction_id) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $payment_method, $transaction_id);
 
-    if ($conn->query($sql) === TRUE) {
+    if ($stmt->execute()) {
         $message = "✅ Payment successful!";
     } else {
-        $message = "❌ Error: " . $sql . "<br>" . $conn->error;
+        $message = "❌ Error: " . $stmt->error;
     }
+    $stmt->close();
 }
 
 $conn->close();

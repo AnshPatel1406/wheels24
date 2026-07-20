@@ -17,9 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $password = $_POST['password'];
         $security_question = $_POST['security_question'];
         $security_answer = $_POST['security_answer'];
-        $query = "INSERT INTO users (name, city, mobile, email, username, password, security_question, security_answer) 
-                  VALUES ('$name', '$city', '$mobile', '$email', '$username', '$password', '$security_question', '$security_answer')";
-        mysqli_query($conn, $query);
+        $query = "INSERT INTO users (name, city, mobile, email, username, password, security_question, security_answer) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("ssssssss", $name, $city, $mobile, $email, $username, $password, $security_question, $security_answer);
+        $stmt->execute();
+        $stmt->close();
         header("Location: users.php");
     } elseif (isset($_POST['update_user'])) {
         $id = $_POST['id'];
@@ -31,14 +33,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $password = $_POST['password'];
         $security_question = $_POST['security_question'];
         $security_answer = $_POST['security_answer'];
-        $query = "UPDATE users SET name='$name', city='$city', mobile='$mobile', email='$email', username='$username', 
-                  password='$password', security_question='$security_question', security_answer='$security_answer' WHERE id=$id";
-        mysqli_query($conn, $query);
+        $query = "UPDATE users SET name=?, city=?, mobile=?, email=?, username=?, password=?, security_question=?, security_answer=? WHERE id=?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("ssssssssi", $name, $city, $mobile, $email, $username, $password, $security_question, $security_answer, $id);
+        $stmt->execute();
+        $stmt->close();
         header("Location: users.php");
     } elseif (isset($_POST['delete_user'])) {
         $id = $_POST['id'];
-        $query = "DELETE FROM users WHERE id=$id";
-        mysqli_query($conn, $query);
+        $query = "DELETE FROM users WHERE id=?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->close();
         header("Location: users.php");
     }
 }

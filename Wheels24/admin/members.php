@@ -8,8 +8,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email = $_POST['email'];
         $phone = $_POST['phone'];
         $membership_type = $_POST['membership_type'];
-        $query = "INSERT INTO users (name, email, username, password) VALUES ('$name', '$email', '$username', '$password')";
-        $conn->query($query);
+        $username = $_POST['username'] ?? '';
+        $password = $_POST['password'] ?? '';
+        $query = "INSERT INTO users (name, email, username, password) VALUES (?, ?, ?, ?)";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("ssss", $name, $email, $username, $password);
+        $stmt->execute();
+        $stmt->close();
     }
     if (isset($_POST['delete_user'])) {
         if (isset($_POST['id']) && is_numeric($_POST['id'])) {
