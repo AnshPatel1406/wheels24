@@ -40,89 +40,58 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Gateway</title>
-    <style>
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f2f5;
-            text-align: center;
-        }
-        .container {
-            width: 40%;
-            margin: auto;
-            padding: 30px;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 50px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .container:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-        h2 {
-            color: #333;
-            margin-bottom: 20px;
-        }
-        .pay-btn {
-            background: #28a745;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 18px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .pay-btn:hover {
-            background: #218838;
-        }
-        .loader {
-            display: none;
-            font-size: 18px;
-            color: #ff9800;
-            margin-top: 10px;
-        }
-        select {
-            padding: 8px;
-            font-size: 16px;
-            margin-top: 10px;
-            width: 90%;
-        }
-    </style>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
-    <div class="container">
-        <h2>Payment Gateway</h2>
+<body class="fade-in">
+    <?php include 'includes/header.php'; ?>
+    <main class="container section" style="padding-top: 8rem; min-height: 80vh; display: flex; justify-content: center; align-items: center;">
+        <div class="form-card fade-in-up text-center" style="max-width: 500px; width: 100%;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">💳</div>
+            <h2 style="margin-bottom: 2rem;">Secure Checkout</h2>
 
-        <?php if (!empty($message)) : ?>
-            <p style="color: #28a745; font-weight: bold;"><?php echo $message; ?></p>
-            <p><strong>Payment Method:</strong> <?php echo htmlspecialchars($payment_method); ?></p>
-            <p><strong>Transaction ID:</strong> <?php echo htmlspecialchars($transaction_id); ?></p>
-        <?php else : ?>
-            <form id="paymentForm" method="POST">
-                <label for="payment_method"><strong>Select Payment Method:</strong></label><br>
-                <select name="payment_method" id="payment_method" required>
-                    <option value="Credit Card">Credit Card</option>
-                    <option value="Debit Card">Debit Card</option>
-                    <option value="UPI">UPI</option>
-                    <option value="Net Banking">Net Banking</option>
-                </select><br><br>
+            <?php if (!empty($message)) : ?>
+                <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); padding: 2rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+                    <p style="color: #10b981; font-weight: 600; font-size: 1.2rem; margin-bottom: 1rem;"><?php echo $message; ?></p>
+                    <div style="text-align: left; color: var(--text-secondary); background: rgba(0,0,0,0.2); padding: 1rem; border-radius: var(--radius-sm);">
+                        <p style="margin-bottom: 0.5rem;"><strong>Payment Method:</strong> <span style="color: var(--text-primary); float: right;"><?php echo htmlspecialchars($payment_method); ?></span></p>
+                        <p><strong>Transaction ID:</strong> <span style="color: var(--text-primary); float: right;"><?php echo htmlspecialchars($transaction_id); ?></span></p>
+                    </div>
+                </div>
+                <a href="index" class="btn btn-primary" style="margin-top: 1rem;">Return to Homepage</a>
+            <?php else : ?>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">You are completing enrollment for your Wheels24 membership. Please confirm your payment details below.</p>
+                <form id="paymentForm" method="POST" style="text-align: left;">
+                    <div style="margin-bottom: 2rem;">
+                        <label for="payment_method" style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary);">Confirm Payment Method</label>
+                        <select name="payment_method" id="payment_method" class="form-control" required>
+                            <option value="Credit Card" <?php echo (isset($_GET['payment_method']) && $_GET['payment_method'] == 'Credit Card') ? 'selected' : ''; ?>>Credit Card</option>
+                            <option value="Debit Card" <?php echo (isset($_GET['payment_method']) && $_GET['payment_method'] == 'Debit Card') ? 'selected' : ''; ?>>Debit Card</option>
+                            <option value="UPI" <?php echo (isset($_GET['payment_method']) && $_GET['payment_method'] == 'UPI') ? 'selected' : ''; ?>>UPI</option>
+                            <option value="Net Banking" <?php echo (isset($_GET['payment_method']) && $_GET['payment_method'] == 'Net Banking') ? 'selected' : ''; ?>>Net Banking</option>
+                        </select>
+                    </div>
 
-                <button type="button" class="pay-btn" onclick="fakePayment()">Pay Now</button>
-                <p class="loader" id="loader">Processing Payment...</p>
-            </form>
-        <?php endif; ?>
-    </div>
+                    <button type="button" class="btn btn-primary" id="payBtn" style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 0.5rem;" onclick="fakePayment()">
+                        <span id="btnText">Pay Securely Now</span>
+                    </button>
+                    <p id="loader" style="display: none; color: var(--accent); margin-top: 1rem; text-align: center; font-size: 0.9rem; animation: pulse 1.5s infinite;">Processing your transaction securely... please wait.</p>
+                </form>
+            <?php endif; ?>
+        </div>
 
+    </main>
     <script>
         function fakePayment() {
             document.getElementById("loader").style.display = "block";
+            const btn = document.getElementById("payBtn");
+            btn.disabled = true;
+            btn.style.opacity = '0.7';
+            document.getElementById("btnText").innerText = "Processing...";
 
             setTimeout(() => {
                 document.getElementById("paymentForm").submit();
-            }, 2000); // Simulating a delay for fake processing
+            }, 2000);
         }
     </script>
      <?php include 'includes/footer.php'; ?>

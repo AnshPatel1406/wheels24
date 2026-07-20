@@ -57,124 +57,71 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Membership Enrollment Form</title>
-    <style>
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f2f5;
-            text-align: center;
-        }
-        .container {
-            width: 40%;
-            margin: auto;
-            padding: 30px;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 50px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .container:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-        h2 {
-            color: #333;
-            margin-bottom: 20px;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        label {
-            font-weight: bold;
-            margin-top: 10px;
-            width: 100%;
-            text-align: left;
-        }
-        input, select {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        input:focus, select:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-        }
-        input {
-            background: #fff;
-            background-image: linear-gradient(45deg, #f3ec78, #af4261);
-            background-clip: padding-box;
-            color: #333;
-        }
-        .btn {
-            background: linear-gradient(45deg, #ff6b6b, #f06595);
-            color: #fff;
-            padding: 10px 20px;
-            margin-top: 20px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .btn:hover {
-            background: linear-gradient(45deg, #f06595, #ff6b6b);
-            transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        p {
-            color: #d9534f;
-            font-weight: bold;
-        }
-    </style>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
-    <div class="container">
-        <h2>Membership Enrollment Form</h2>
-        <?php if ($message != ""): ?>
-            <p><?php echo $message; ?></p>
-        <?php endif; ?>
-        <?php if ($showPaymentDetails): ?>
-            <div class="payment-details">
-                <h3>Payment Details</h3>
-                <p><strong>Membership Type:</strong> <?php echo $membership; ?></p>
-                <p><strong>Payment Method:</strong> <?php echo $payment_method; ?></p>
-            </div>
-        <?php else: ?>
-            <form action="enroll_form" method="post">
-                <label for="name">Full Name:</label>
-                <input type="text" id="name" name="name" required>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="phone">Phone Number:</label>
-                <input type="text" id="phone" name="phone" required>
-                
-                <label for="membership">Select Membership:</label>
-                <select id="membership" name="membership" required>
-                <option value="Silver">Silver - ₹999/year</option>
-                <option value="Gold">Gold - ₹2,499/year</option>
-                <option value="Platinum">Platinum - ₹4,999/year</option>
-                </select>
-                
-                <label for="payment_method">Select Payment Method:</label>
-                <select id="payment_method" name="payment_method" required>
-                    <option value="Credit Card">Credit Card</option>
-                    <option value="Debit Card">Debit Card</option>
-                    <option value="Net Banking">Net Banking</option>
-                    <option value="UPI">UPI</option>
-                </select>
-                
-                <button type="submit" class="btn">Enroll Now</button>
-            </form>
-        <?php endif; ?>
-    </div>
+<body class="fade-in">
+    <?php include 'includes/header.php'; ?>
+    <main class="container section" style="padding-top: 6rem; min-height: 80vh; display: flex; justify-content: center; align-items: center;">
+        <div class="form-card fade-in-up" style="max-width: 500px; width: 100%;">
+            <h2 class="text-center" style="margin-bottom: 2rem;">Membership Enrollment Form</h2>
+            
+            <?php if ($message != ""): ?>
+                <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #ef4444; padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; text-align: center;">
+                    <?php echo $message; ?>
+                </div>
+            <?php endif; ?>
+            
+            <?php if ($showPaymentDetails): ?>
+                <div class="card text-center" style="border: 1px solid var(--accent);">
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;">Payment Details</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 0.5rem;"><strong>Membership Type:</strong> <span style="color: var(--text-primary);"><?php echo $membership; ?></span></p>
+                    <p style="color: var(--text-secondary); margin-bottom: 0.5rem;"><strong>Payment Method:</strong> <span style="color: var(--text-primary);"><?php echo $payment_method; ?></span></p>
+                </div>
+            <?php else: ?>
+                <form action="enroll_form" method="post">
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="name" style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary);">Full Name</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="email" style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary);">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="phone" style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary);">Phone Number</label>
+                        <input type="text" id="phone" name="phone" class="form-control" required>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="membership" style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary);">Select Membership</label>
+                        <?php 
+                            $selectedPlan = isset($_GET['plan']) ? strtolower($_GET['plan']) : ''; 
+                        ?>
+                        <select id="membership" name="membership" class="form-control" required>
+                            <option value="Silver" <?php echo ($selectedPlan == 'silver') ? 'selected' : ''; ?>>Silver - ₹999/year</option>
+                            <option value="Gold" <?php echo ($selectedPlan == 'gold') ? 'selected' : ''; ?>>Gold - ₹2,499/year</option>
+                            <option value="Platinum" <?php echo ($selectedPlan == 'platinum') ? 'selected' : ''; ?>>Platinum - ₹4,999/year</option>
+                        </select>
+                    </div>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <label for="payment_method" style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary);">Select Payment Method</label>
+                        <select id="payment_method" name="payment_method" class="form-control" required>
+                            <option value="Credit Card">Credit Card</option>
+                            <option value="Debit Card">Debit Card</option>
+                            <option value="Net Banking">Net Banking</option>
+                            <option value="UPI">UPI</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Enroll Now</button>
+                </form>
+            <?php endif; ?>
+        </div>
+    </main>
+    <?php include 'includes/footer.php'; ?>
 </body>
 </html>
