@@ -148,8 +148,6 @@
             <a href="admin.php">Manage Cars</a>
             <a href="brands.php">Manage Brands</a>
             <a href="users.php">Manage Users</a>
-            <a href="members.php">Manage Members</a>
-            <a href="payments.php">Manage Payments</a>
         </div>
         <div style="padding: 1.5rem;">
             <a href="../index.php" class="btn" style="width: 100%; background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239,68,68,0.2); text-align: center;">Logout</a>

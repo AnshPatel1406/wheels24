@@ -18,7 +18,6 @@
             <li><a href="index#cars-by-budget">By Budget</a></li>
           </ul>
         </li>
-        <li><a href="membership">Membership</a></li>
         <li><a href="compare-cars">Compare</a></li>
       </ul>
 

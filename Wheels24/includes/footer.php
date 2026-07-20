@@ -10,7 +10,6 @@
         <h4>Quick Links</h4>
         <ul>
           <li><a href="index">Home</a></li>
-          <li><a href="membership">Membership</a></li>
           <li><a href="compare-cars">Compare Cars</a></li>
           <li><a href="login-register">Login / Register</a></li>
         </ul>

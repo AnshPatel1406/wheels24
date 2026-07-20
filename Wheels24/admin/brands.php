@@ -39,11 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {
             $stmt->bind_param(str_repeat('s', count($values)), ...$values);
         } elseif ($selectedTable === 'interiorimages') {
             $stmt->bind_param(str_repeat('s', count($values)), ...$values);
-        } elseif ($selectedTable === 'members') {
-            $stmt->bind_param(str_repeat('s', count($values)), ...$values);
         } elseif ($selectedTable === 'mileage') {
-            $stmt->bind_param(str_repeat('s', count($values)), ...$values);
-        } elseif ($selectedTable === 'payments') {
             $stmt->bind_param(str_repeat('s', count($values)), ...$values);
         } elseif ($selectedTable === 'pros') {
             $stmt->bind_param(str_repeat('s', count($values)), ...$values);
@@ -101,18 +97,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
             $stmt->bind_param("i", $id);
             $stmt->execute();
             $stmt->close();
-        } else if ($selectedTable === 'members') {
-            $stmt = $conn->prepare("DELETE FROM $selectedTable WHERE member_id = ?");
-            $stmt->bind_param("i", $id);
-            $stmt->execute();
-            $stmt->close();
         } else if ($selectedTable === 'mileage') {
             $stmt = $conn->prepare("DELETE FROM $selectedTable WHERE car_id = ?");
-            $stmt->bind_param("i", $id);
-            $stmt->execute();
-            $stmt->close();
-        } else if ($selectedTable === 'payments') {
-            $stmt = $conn->prepare("DELETE FROM $selectedTable WHERE payment_id = ?");
             $stmt->bind_param("i", $id);
             $stmt->execute();
             $stmt->close();

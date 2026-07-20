@@ -698,80 +698,7 @@ input, select, textarea {
   line-height: 1.6;
 }
 
-/* ---------- Membership Cards ---------- */
-.membership-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  padding: 2rem 0;
-}
 
-.membership-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 2.5rem 2rem;
-  text-align: center;
-  transition: all var(--transition-base);
-  position: relative;
-  overflow: hidden;
-}
-
-.membership-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-}
-
-.membership-card.silver::before {
-  background: linear-gradient(90deg, #8e9eab, #eef2f3);
-}
-
-.membership-card.gold::before {
-  background: linear-gradient(90deg, #f7971e, #ffd200);
-}
-
-.membership-card.platinum::before {
-  background: linear-gradient(90deg, #667eea, #764ba2);
-}
-
-.membership-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--border-hover);
-  box-shadow: var(--shadow-lg);
-}
-
-.membership-card h2 {
-  font-size: 1.5rem;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-}
-
-.membership-card .price {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--accent);
-  margin-bottom: 1.5rem;
-}
-
-.membership-card ul {
-  text-align: left;
-  margin-bottom: 2rem;
-}
-
-.membership-card ul li {
-  padding: 0.6rem 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-}
-
-.membership-card ul li:last-child {
-  border-bottom: none;
-}
 
 /* ---------- Form Styles ---------- */
 .form-card {
@@ -900,8 +827,7 @@ select.form-control {
 
 /* Staggered animation for grids */
 .car-grid .car-card,
-.brand-grid .brand-card,
-.membership-grid .membership-card {
+.brand-grid .brand-card {
   opacity: 0;
   animation: fadeInUp 0.5s ease forwards;
 }
@@ -1057,9 +983,7 @@ select.form-control {
     margin: 0 1rem;
   }
 
-  .membership-grid {
-    grid-template-columns: 1fr;
-  }
+
 
   .brand-grid {
     grid-template-columns: repeat(3, 1fr);
